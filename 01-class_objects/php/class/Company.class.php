@@ -1,13 +1,21 @@
 <?php
 /**
- * 
+ * @desc Class that will create a Company object that will interact with the Worker object.
+ *
+ * @author David Francisco de Araujo <david.araujo91@gmail.com>
  */
 class Company
 {
     private $Name;
     private $Sectors;
+
+    /**
+     * @desc Must have to be a Worker object.
+     * @var Worker
+     */
     private $Employee;
 
+    
     function __construct($companyName)
     {
         $this->Name = $companyName;
