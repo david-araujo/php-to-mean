@@ -15,13 +15,19 @@ class Company
      */
     private $Employee;
 
-    
+
     function __construct($companyName)
     {
         $this->Name = $companyName;
         $this->Sectors = 0;
     }
 
+    /**
+     * @desc   Method to contract and set Company information to worker object.
+     * @param  Worker $employee Must to be a Worker object
+     * @param  float  $salary
+     * @param  string $role     will be the profession of the employee.
+     */
     public function contract($employee, $salary, $role)
     {
         $this->Employee = (object) $employee;
@@ -29,16 +35,28 @@ class Company
         $this->Sectors += 1;
     }
 
+    /**
+     * @desc  Used to change worker obejects.
+     * @param Worker $employee
+     */
     public function setEmployee($employee)
     {
         $this->Employee = (object) $employee;
     }
 
+    /**
+     * @desc   Used to add month salary to employee.
+     */
     public function pay()
     {
         $this->Employee->receive($this->Employee->getSalary());
     }
 
+    /**
+     * @desc   Used to change Role and Salary from one Worker object.
+     * @param  string $newRole
+     * @param  float  $newSalary Optional
+     */
     public function promote($newRole, $newSalary = null)
     {
         $this->Employee->setProfession($newRole);
@@ -49,6 +67,10 @@ class Company
         }
     }
 
+    /**
+     * @desc   Set NULL Company information from a Worker object.
+     * @param  float $rescission Value that worker receive when will dismmiss.
+     */
     public function dismiss($rescission)
     {
         $this->Sectors -= 1;
